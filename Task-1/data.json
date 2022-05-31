@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Apple",
+        "Price": 10,
+        "is_available": true
+    },
+    {
+        "name": "Guava",
+        "Price": 6,
+        "is_available": true
+    },
+    {
+        "name": "Grapes",
+        "Price": 4,
+        "is_available": false
+    },
+    {
+        "name": "Mango",
+        "Price": 15,
+        "is_available": true
+    }
+]
