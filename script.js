@@ -1,49 +1,23 @@
-let data = [
-  {
-    name: "Apple",
-    Price: 10,
-    is_available: true,
-  },
-  {
-    name: "Guava",
-    Price: 6,
-    is_available: true,
-  },
-  {
-    name: "Grapes",
-    Price: 4,
-    is_available: false,
-  },
-  {
-    name: "Mango",
-    Price: 15,
-    is_available: true,
-  },
-  {
-    name: "Musk Melon",
-    Price: 20,
-    is_available: true,
-  },
-];
+//Search
 
-const tbodyEl = document.querySelector("tbody");
-const tableEl = document.querySelector("table");
-function onAddWebsite(e) {
-  data.forEach((element) =>
-    tbodyEl.insertAdjacentHTML(
-      "beforebegin",
-      `<tr id="rows"><td>${element.name}</td><td>${element.Price}</td><td>${element.is_available}</td><td><button type="button" class="btn btn-secondary" style="cursor: pointer">Delete</button></td></tr>`
-    )
-  );
-}
+const searchInputEl = document.getElementById("searchInputEl");
 
-function onDeleteRow(e) {
-  if (!e.target.classList.contains("btn-secondary")) {
-    return;
+function searchTable() {
+  let input, filter, trEl, tdEl, txtValue;
+  input = document.getElementById("searchInputEl");
+  filter = input.value.toUpperCase();
+  let tableEl = document.getElementById("tableEl");
+  trEl = tableEl.getElementsByTagName("tr");
+
+  for (let i = 0; i < trEl.length; i++) {
+    tdEl = trEl[i].getElementsByTagName("td")[0];
+    if (tdEl) {
+      txtValue = tdEl.textContent || tdEl.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        trEl[i].style.display = "";
+      } else {
+        trEl[i].style.display = "none";
+      }
+    }
   }
-
-  const btn = e.target;
-  btn.closest("tr").remove();
 }
-onAddWebsite();
-tableEl.addEventListener("click", onDeleteRow);
