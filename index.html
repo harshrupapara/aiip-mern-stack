@@ -10,8 +10,10 @@
   <body>
 
    <input id="searchInputEl" class="form-control me-sm-2" type="text" placeholder="What you are looking for?" style="border-width: 5px 5px; border-radius: 200px;"/>
-   <button onclick="searchTable()" id="searchButton" class="btn btn-outline-secondary" style="margin-left: 10px;" >Search</button> 
-    
+   <br/>
+   <button  id="searchButton" class="btn btn-outline-primary" style="margin-left: 10px;" >Search</button> 
+   <button  id="delButton" onclick="" class="btn btn-outline-danger" style="margin-left: 10px;" >Delete</button> 
+   <br/>
     <br/>
       <table id="tableEl" class="table table-light" style="font-family: Roboto, sans-serif; border-radius:10px">
         <thead>
@@ -26,57 +28,6 @@
       </table>
     </table>
     <script type="text/javascript" src="script.js"></script>
-    <script>
-      let data = [
-  {
-    name: "Apple",
-    Price: 10,
-    is_available: true,
-  },
-  {
-    name: "Guava",
-    Price: 6,
-    is_available: true,
-  },
-  {
-    name: "Grapes",
-    Price: 4,
-    is_available: false,
-  },
-  {
-    name: "Mango",
-    Price: 15,
-    is_available: true,
-  },
-  {
-    name: "Musk Melon",
-    Price: 20,
-    is_available: true,
-  },
-];
 
-//Delete
-const tbodyEl = document.querySelector("tbody");
-const tableEl = document.querySelector("table");
-function onAddWebsite(e) {
-  data.forEach((element) =>
-    tbodyEl.insertAdjacentHTML(
-      "beforebegin",
-      `<tr id="rows"><td>${element.name}</td><td>${element.Price}</td><td>${element.is_available}</td><td><button type="button" class="btn btn-secondary" style="cursor: pointer">Delete</button></td></tr>`
-    )
-  );
-}
-
-function onDeleteRow(e) {
-  if (!e.target.classList.contains("btn-secondary")) {
-    return;
-  }
-
-  const btn = e.target;
-  btn.closest("tr").remove();
-}
-onAddWebsite();
-tableEl.addEventListener("click", onDeleteRow);
-    </script>
   </body>
 </html>
